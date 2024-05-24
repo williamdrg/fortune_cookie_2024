@@ -574,7 +574,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  background-color: #968f8f;
   border-radius: 50%;
   cursor: pointer;
   transition-duration: 0.3s;
@@ -632,7 +632,7 @@
 #checkboxInput:checked + .toggleSwitch .mute-speaker {
   opacity: 1;
   transition-duration: 0.3s;
-  background-color: red;
+  background-color: #de5b54;
 }
 
 #checkboxInput:active + .toggleSwitch {
@@ -640,7 +640,7 @@
 }
 
 #checkboxInput:hover + .toggleSwitch {
-  background-color: rgb(61, 61, 61);
+  background-color: #c59314;
 }
 
 /* temas */
