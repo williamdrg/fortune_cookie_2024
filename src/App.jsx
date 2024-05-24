@@ -146,7 +146,7 @@ function App() {
               />
               <ShareButtons phrase={filteredPhrases[state.index].phrase} />
               <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} confirmMessage={state.confirmationMessage}/>
-              {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>}
+              {/* {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>} */}
               <ThemeSelector />
               <SoundControl />
             </div>
