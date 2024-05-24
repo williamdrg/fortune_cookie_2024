@@ -58,7 +58,7 @@
 
 .card-cokie img {
   width: 70%;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  /* transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); */
 }
 
 .card-cokie:hover, .card-cokie-show {
@@ -105,6 +105,11 @@
 .card-cokie:hover img, .card-cokie-show img {
   scale: 0;
   transform: rotate(-45deg);
+}
+
+.card-cokie:hover .kelly, .card-cokie-show .kelly { 
+  scale: 1;
+  transform: rotate(0deg);
 }
 
 /* ------ */
@@ -439,7 +444,7 @@
 }
  */
 .error-message {
-  color: red;
+  font-weight: bold;
   font-size: 0.9rem;
   margin-top: 10px;
   text-align: center;
@@ -525,7 +530,7 @@
   --text-color: #000000;
   --button-background: #007BFF;
   --button-text: #ffffff;
-  --error-color: red;
+  --error-color: rgb(226, 176, 176);
 }
 
 body.dark .App {
@@ -533,7 +538,7 @@ body.dark .App {
   --text-color: #000000;
   --button-background: #444444;
   --button-text: #ffffff;
-  --error-color: #ff5555;
+  --error-color: #f4bebe;
   filter: grayscale(20%) brightness(50%);
 }
 
@@ -542,7 +547,7 @@ body.light .App {
   --text-color: #000000;
   --button-background: #007BFF;
   --button-text: #ffffff;
-  --error-color: red;
+  --error-color: rgb(244, 210, 210);
   filter: none;
 }
 
@@ -745,4 +750,27 @@ button {
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 1rem;
+}
+
+
+/* ---- */
+
+@media (max-width: 450px) {
+  .footer {
+    font-size: 0.875rem; 
+  }
+  .btn-change {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  .card-cokie {
+    width:290px;
+    height: 170px;
+    margin: 10px;
+  }
+  .container-cookie h1 {
+    font-size: 25px;
+  }
+  
 }

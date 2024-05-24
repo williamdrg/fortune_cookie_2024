@@ -123,8 +123,7 @@ function App() {
                 createFhrase={openModal}
               />
               <ShareButtons phrase={filteredPhrases[state.index].phrase} />
-              {/* {state.showFavorites && <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />} */}
-              <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} />
+              <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} confirmMessage={state.confirmationMessage}/>
               {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>}
               <ThemeSelector />
             </div>

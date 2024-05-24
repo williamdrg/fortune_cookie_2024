@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const AddPhrase = ({ addPhrase, onClose, isOpen }) => {
+const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
   const [phrase, setPhrase] = useState('');
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
@@ -52,6 +52,7 @@ const AddPhrase = ({ addPhrase, onClose, isOpen }) => {
      {/* <button className="btn-add-phrase" type="submit">Añadir Frase</button> */}
      <button className="close-button" onClick={onClose}>×</button>
      {error && <p className="error-message">{error}</p>}
+     {confirmMessage && <div className="confirmation-message">{confirmMessage}</div>}
   </form>
 
   <div id="rays">
@@ -140,6 +141,7 @@ AddPhrase.propTypes = {
   addPhrase: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  confirmMessage: PropTypes.string.isRequired,
 };
 
 export default AddPhrase;
