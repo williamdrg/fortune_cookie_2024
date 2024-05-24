@@ -2,18 +2,19 @@ import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } fr
 import PropTypes from 'prop-types';
 
 const ShareButtons = ({ phrase }) => {
-  
-  return ( 
+  const shareUrl = window.location.href;
+
+  return (
     <div className="share-buttons">
-      <TwitterShareButton url={window.location.href} title={phrase}>
+      <TwitterShareButton url={shareUrl} title={phrase}>
         <TwitterIcon size={32} round={true} />
       </TwitterShareButton>
-      <FacebookShareButton url={window.location.href} quote={phrase}>
+      <FacebookShareButton url={shareUrl} quote={phrase}>
         <FacebookIcon size={32} round={true} />
       </FacebookShareButton>
-  </div>
+    </div>
   );
-}; 
+};
 
 ShareButtons.propTypes = {
   phrase: PropTypes.string.isRequired

@@ -4,7 +4,7 @@ import Message from './components/Message'
 import FavoriteList from './components/FavoriteList'
 import ShareButtons from './components/ShareButtons';
 import AddPhrase from './components/AddPhrase';
-// import Modal from './components/Modal';
+import Modal from './components/Modal';
 import phrasesData from './data/phrases.json';
 import ThemeSelector from './components/ThemeSelector';
 import CategorySelector from './components/CategorySelector';
@@ -14,9 +14,9 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const backgroundImage = [ 
-    "url(/fondoa.jpg)", "url(/fondo-g1.png)", "url(/fondo-g2.png)", 
-    "url(/fondo-g3.png)", "url(/fondo-g4.png)", "url(/fondo-g5.png)",
-    "url(/fondo-g7.png)"
+    "url(/font1.webp)", "url(/font2.webp)", "url(/font3.webp)", 
+    "url(/font4.webp)", "url(/font5.webp)", "url(/font6.webp)",
+    "url(/font7.webp)", "url(/font8.webp)"
   ]
 
   const initialPhrases = JSON.parse(localStorage.getItem('phrases')) || phrasesData;
@@ -31,7 +31,8 @@ function App() {
     showFavorites: false,
     confirmationMessage: '',
     category: 'all',
-    isModalOpen: false
+    isModalOpen: false,
+    isFavoritesModalOpen: false
    });
 
    const [categories, setCategories] = useState([...new Set(phrasesData.map(p => p.category)), 'all']);
@@ -63,7 +64,7 @@ function App() {
   };
 
   const toggleShowFavorites = () => {
-    setState(prevState => ({ ...prevState, showFavorites: !prevState.showFavorites }));
+    setState(prevState => ({ ...prevState, isFavoritesModalOpen: !prevState.isFavoritesModalOpen }));
   };
 
   const addPhrase = (newPhrase) => {
@@ -105,7 +106,7 @@ function App() {
   return (
         <div className="App" style={{ backgroundImage: backgroundImage[state.indexa] }}>
           <div className="overlay">
-            <div className='container__cookie'>
+            <div className='container-cookie'>
               <h1>GALLETAS DE LA <br /> FORTUNA</h1>
               <CategorySelector category={state.category} changeCategory={changeCategory} categories={categories} />
               <Message
@@ -115,19 +116,21 @@ function App() {
               />
               <Button
                 change={changeIndex}
-                pp={state.isVisible ? 'btn-change' : 'btn-change btn-off'}
                 addFavorite={addFavorite}
                 toggleShowFavorites={toggleShowFavorites}
                 isVisible={state.isVisible ? 'btn-change' : 'btn-change btn-off'}
                 createFhrase={openModal}
               />
               <ShareButtons phrase={filteredPhrases[state.index].phrase} />
-              {state.showFavorites && <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />}
+              {/* {state.showFavorites && <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />} */}
               <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} />
               {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>}
               <ThemeSelector />
             </div>
         </div>
+          <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
+            <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />
+          </Modal>
       </div>
   )
 }

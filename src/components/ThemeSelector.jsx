@@ -10,18 +10,10 @@ const ThemeSelector = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="theme-selector">
       <input type="checkbox" name="checkbox" className="switch" checked={theme === 'light'} onChange={handleThemeChange}/>
     </div>
   );
 };
 
 export default ThemeSelector;
-
-{/* <div className="theme-selector">
-      <label htmlFor="theme">Selecciona un tema: </label>
-      <select id="theme" value={theme} onChange={handleThemeChange}>
-        <option value="light">Claro</option>
-        <option value="dark">Oscuro</option>
-      </select>
-    </div> */}

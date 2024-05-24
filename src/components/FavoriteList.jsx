@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const FavoriteList = ({ favorites, removeFavorite }) => {
   return (
     <div className="favorite-list">
-      <h2>Frases Favoritas</h2>
+      <h2>Mis Frases Favoritas</h2>
       <ul>
         {favorites.map((favorite, index) => (
           <li key={index}>

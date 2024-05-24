@@ -1,4 +1,5 @@
 import  { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const ThemeContext = createContext();
 
@@ -8,7 +9,7 @@ export const ThemeProvider = ({ children }) => {
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.body.className = newTheme; // Actualiza la clase del body
+    document.body.className = newTheme;
   };
 
   useEffect(() => {
@@ -20,4 +21,8 @@ export const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
+};
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
