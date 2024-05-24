@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import '../../src/App.css';
+// import '../../src/App.css';
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;

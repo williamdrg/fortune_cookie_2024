@@ -35,12 +35,16 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
     }
   };
 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value.toLowerCase());
+  };
+
   return (
     <div id="Container" className="modal-overlay">
   <form onSubmit={handleSubmit} className="form">
     <input className="form-content" type="text" placeholder="Nueva frase" value={phrase} onChange={handlePhraseChange} required/>
      <input className='form-content' type="text" placeholder="Autor" value={author} onChange={(e) => setAuthor(e.target.value)} required/>
-     <input className='form-content' type="text" placeholder="Categoría" value={category} onChange={(e) => setCategory(e.target.value)} required/>
+     <input className='form-content' type="text" placeholder="Categoría" value={category}  onChange={handleCategoryChange} required/>
      <button className="btn-add-phrase" type="submit">
       <strong>Añadir Frase</strong>
       <div id="container-stars"><div id="stars"></div></div>

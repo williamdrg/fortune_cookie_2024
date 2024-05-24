@@ -15,9 +15,9 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const backgroundImage = [ 
-    "url(/font1.webp)", "url(/font2.webp)", "url(/font3.webp)", 
-    "url(/font4.webp)", "url(/font5.webp)", "url(/font6.webp)",
-    "url(/font7.webp)", "url(/font8.webp)"
+    "url(/font-1.webp)", "url(/font-2.webp)", "url(/font-3.webp)", 
+    "url(/font-4.webp)", "url(/font-5.webp)", "url(/font-6.webp)",
+    // "url(/font7.webp)", "url(/font8.webp)"
   ]
 
   const initialPhrases = JSON.parse(localStorage.getItem('phrases')) || phrasesData;
@@ -33,7 +33,9 @@ function App() {
     confirmationMessage: '',
     category: 'all',
     isModalOpen: false,
-    isFavoritesModalOpen: false
+    isFavoritesModalOpen: false,
+    isAddFavoriteModalOpen: false,
+    addFavoriteMessage: ''
    });
 
    const [categories, setCategories] = useState([...new Set(phrasesData.map(p => p.category)), 'all']);
@@ -53,9 +55,26 @@ function App() {
 
   const addFavorite = () => {
     const newFavorite = filteredPhrases[state.index];
-    const newFavorites = [...state.favorites, newFavorite];
-    setState(prevState => ({ ...prevState, favorites: newFavorites }));
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    if (!state.favorites.some(fav => fav.phrase === newFavorite.phrase)) {   
+      const newFavorites = [...state.favorites, newFavorite];
+      setState(prevState => ({ 
+        ...prevState, 
+        favorites: newFavorites,
+        isAddFavoriteModalOpen: true,
+        addFavoriteMessage: '¡Frase añadida a favoritos!'
+       }));
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    } else {
+      setState(prevState => ({
+        ...prevState,
+        isAddFavoriteModalOpen: true,
+        addFavoriteMessage: 'Esta frase ya está en tus favoritos.'
+      }));
+    }
+  };
+
+  const closeAddFavoriteModal = () => {
+    setState(prevState => ({ ...prevState, isAddFavoriteModalOpen: false }));
   };
 
   const removeFavorite = (phraseToRemove) => {
@@ -101,7 +120,7 @@ function App() {
         <div className="App" style={{ backgroundImage: backgroundImage[state.indexa] }}>
           <div className="overlay">
             <div className='container-cookie'>
-              <h1>GALLETAS DE LA <br /> FORTUNA</h1>
+            <h1>¡DESCUBRE LO QUE LA FORTUNA TIENE PARA TI!</h1>
               <CategorySelector category={state.category} changeCategory={changeCategory} categories={categories} />
               <Message
                 dataPhrase={filteredPhrases[state.index].phrase}
@@ -123,6 +142,9 @@ function App() {
         </div>
           <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
             <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />
+          </Modal>
+          <Modal isOpen={state.isAddFavoriteModalOpen} onClose={closeAddFavoriteModal}>
+            <p className='favorite-message'>{state.addFavoriteMessage}</p>
           </Modal>
           <Footer />
       </div>

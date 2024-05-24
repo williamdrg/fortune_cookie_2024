@@ -40,7 +40,34 @@
   font-weight: 600;
   color: white;
   text-shadow: -1px 3px 3px #7869eb, 0px 4px 1px rgba(0, 0, 0, 0.5), 4px 4px 5px rgba(0, 0, 0, 0.7), 0px 0px 7px rgba(0, 0, 0, 0.4);
+  font-size: 28px;
 }
+
+/* .container-cookie h1 {
+  text-align: center;
+  font-family: 'Rubik', 'Courgette', cursive, sans-serif;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff6b6b, #f0e130, #81ecec, #ff9ff3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s infinite;
+  position: relative;
+  font-size: 28px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
 
 /* estilos de la tarjeta */
 .card-cokie {
@@ -247,6 +274,7 @@
   width: 100%;
   max-height: 80vh;
   overflow-y: auto;
+  margin: 5px;
 }
 
 /* Personalizar el scrollbar */
@@ -461,6 +489,9 @@
   margin-right: auto;
 }
 
+.favorite-message {
+ text-align: center;
+}
 
 @media screen and (max-width: 425px) {
   .paper p {
@@ -753,7 +784,7 @@ button {
 
 @media (max-width: 450px) {
   .footer {
-    font-size: 0.875rem; 
+    font-size: 0.875rem;
   }
   .btn-change {
     padding: 8px 16px;
@@ -765,7 +796,42 @@ button {
     margin: 10px;
   }
   .container-cookie h1 {
-    font-size: 25px;
+    font-size: 22px;
+  }
+  .category-selector {
+    border: 2px solid #00ff00;
+    padding: 8px;
+  }
+  
+  .category-selector label {
+    font-size: 14px;
+    color: #00ff00;
+  }
+  
+  .category-selector select {
+    padding: 4px;
+  }
+}
+
+@media (max-width: 384px) {
+  .footer {
+    font-size: 0.675rem; 
+    padding: 10px;
+  }
+  .btn-change {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+  .card-cokie {
+    width:270px;
+    height: 150px;
+    margin: 10px;
+  }
+  .container-cookie h1 {
+    font-size: 20px;
+  }
+  .card-cokie img {
+    width: 60%;
   }
   
 }
