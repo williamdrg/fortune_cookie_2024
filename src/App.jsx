@@ -9,7 +9,9 @@ import phrasesData from './data/phrases.json';
 import ThemeSelector from './components/ThemeSelector';
 import CategorySelector from './components/CategorySelector';
 import Footer from './components/Footer';
+import SoundControl from './components/SoundControl';
 import { useState, useEffect } from 'react'
+import { BACKGROUND_IMAGES } from './constants';
 
 
 function App() {
@@ -17,7 +19,6 @@ function App() {
   const backgroundImage = [ 
     "url(/font-1.webp)", "url(/font-2.webp)", "url(/font-3.webp)", 
     "url(/font-4.webp)", "url(/font-5.webp)", "url(/font-6.webp)"
-    // "url(/font7.webp)", "url(/font8.webp)"
   ]
 
   const initialPhrases = JSON.parse(localStorage.getItem('phrases')) || phrasesData;
@@ -43,6 +44,15 @@ function App() {
    const filteredPhrases = state.category === 'all'
    ? state.phrases
    : state.phrases.filter(phrase => phrase.category == state.category);
+
+
+   useEffect(() => {
+    // Pre-carga de imágenes de fondo
+    BACKGROUND_IMAGES.forEach((image) => {
+      const img = new Image();
+      img.src = image.slice(4, -1).replace(/"/g, ""); // Eliminamos "url(" y ")" del string
+    });
+  }, []);
 
   const changeIndex = () => {
     setState(prevState => ({
@@ -117,7 +127,7 @@ function App() {
   }, [state.isVisible]);
 
   return (
-        <div className="App" style={{ backgroundImage: backgroundImage[state.indexa] }}>
+        <div className="App" style={{ backgroundImage: BACKGROUND_IMAGES[state.indexa] }}>
           <div className="overlay">
             <div className='container-cookie'>
             <h1>¡DESCUBRE LO QUE LA FORTUNA TIENE PARA TI!</h1>
@@ -138,6 +148,7 @@ function App() {
               <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} confirmMessage={state.confirmationMessage}/>
               {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>}
               <ThemeSelector />
+              <SoundControl />
             </div>
         </div>
           <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
