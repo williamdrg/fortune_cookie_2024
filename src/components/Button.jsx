@@ -4,10 +4,10 @@ const Button = ({ change, addFavorite, toggleShowFavorites, isVisible, createFhr
         
   return (
       <div>
-          <button className={isVisible} onClick={ change }>Ver otro</button>
-          <button className={isVisible} onClick={addFavorite}>Guardar Favorito</button>
+          <button className={isVisible} onClick={ change }>¡Descubre otra frase!</button>
+          <button className={isVisible} onClick={addFavorite}>Guardar en Favoritos</button>
           <button className={isVisible} onClick={toggleShowFavorites}>Ver Favoritos</button>
-          <button className={isVisible} onClick={createFhrase}>Añadir Frase</button>
+          <button className={isVisible} onClick={createFhrase}>Añadir Nueva Frase</button>
       </div>
   );
 };

@@ -8,6 +8,7 @@ import Modal from './components/Modal';
 import phrasesData from './data/phrases.json';
 import ThemeSelector from './components/ThemeSelector';
 import CategorySelector from './components/CategorySelector';
+import Footer from './components/Footer';
 import { useState, useEffect } from 'react'
 
 
@@ -131,6 +132,7 @@ function App() {
           <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
             <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />
           </Modal>
+          <Footer />
       </div>
   )
 }

@@ -290,8 +290,8 @@
 }
 
 .btn-change {
-  width: 10em;
-  height: 2.5em;
+  width: 11em;
+  height: 2.8em;
   margin: 0.5em;
   background: rgba(0, 0, 0, 0.7);
   color: #00ff00; /* Verde neón */
@@ -735,5 +735,14 @@ button {
   }
 }
 
-
 /* ---- */
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
