@@ -60,8 +60,8 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
       <path fill="url(#paint0_linear_8_3)" d="M149.5 152H133.42L9.53674e-07 4.70132e-06H149.5L299 4.70132e-06L165.58 152H149.5Z"></path>
       <defs>
         <linearGradient gradientUnits="userSpaceOnUse" y2="12.1981" x2="150.12" y1="152" x1="149.5" id="paint0_linear_8_3">
-          <stop stop-color="#00E0FF"></stop>
-          <stop stop-opacity="0" stop-color="#65EDFF" offset="1"></stop>
+          <stop stopColor="#00E0FF"></stop>
+          <stop stopOpacity="0" stopColor="#65EDFF" offset="1"></stop>
         </linearGradient>
       </defs>
     </svg>
@@ -79,8 +79,8 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
         <path fill="#378BA6" d="M106.725 17.4505C108.336 16.8543 109.231 16.1943 109.231 15.4999C109.231 12.8446 96.1438 10.6921 80.0001 10.6921C63.8564 10.6921 50.7693 12.8446 50.7693 15.4999C50.7693 16.1943 51.6645 16.8543 53.2752 17.4504C53.275 17.4414 53.2748 17.4323 53.2748 17.4232C53.2748 14.768 65.2401 12.6155 80.0001 12.6155C94.7601 12.6155 106.725 14.768 106.725 17.4232C106.725 17.4323 106.725 17.4414 106.725 17.4505Z" clip-rule="evenodd" fill-rule="evenodd"></path>
       </g>
       <defs>
-        <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="45.5002" width="160" y="15.4996" x="0" id="filter0_di_1_38">
-          <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+        <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="45.5002" width="160" y="15.4996" x="0" id="filter0_di_1_38">
+          <feFlood result="BackgroundImageFix" floodOpacity="0"></feFlood>
           <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
           <feOffset dy="4"></feOffset>
           <feGaussianBlur stdDeviation="2"></feGaussianBlur>
@@ -95,8 +95,8 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
           <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" type="matrix" ></feColorMatrix>
           <feBlend result="effect2_innerShadow_1_38" in2="shape" mode="normal" ></feBlend>
         </filter>
-        <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25.0002" width="152" y="3" x="4" id="filter1_i_1_38">
-          <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+        <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="25.0002" width="152" y="3" x="4" id="filter1_i_1_38">
+          <feFlood result="BackgroundImageFix" floodOpacity="0"></feFlood>
           <feBlend result="shape" in2="BackgroundImageFix" in="SourceGraphic" mode="normal"></feBlend>
           <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha" ></feColorMatrix>
           <feMorphology result="effect1_innerShadow_1_38" in="SourceAlpha" operator="erode" radius="3" ></feMorphology>
@@ -106,8 +106,8 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
           <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" type="matrix" ></feColorMatrix>
           <feBlend result="effect1_innerShadow_1_38" in2="shape" mode="normal" ></feBlend>
         </filter>
-        <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="26.7583" width="78.4615" y="0.692139" x="40.7693" id="filter2_di_1_38">
-          <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+        <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="26.7583" width="78.4615" y="0.692139" x="40.7693" id="filter2_di_1_38">
+          <feFlood result="BackgroundImageFix" floodOpacity="0"></feFlood>
           <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha">
           </feColorMatrix>
           <feMorphology result="effect1_dropShadow_1_38" in="SourceAlpha" operator="dilate" radius="2"></feMorphology>
@@ -126,8 +126,8 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
           <feBlend result="effect2_innerShadow_1_38" in2="shape" mode="normal" ></feBlend>
         </filter>
         <radialGradient gradientTransform="translate(80 17.4236) rotate(90) scale(6.25004 36.9143)" gradientUnits="userSpaceOnUse" r="1" cy="0" cx="0" id="paint0_radial_1_38">
-          <stop stop-color="#00FFF0"></stop>
-          <stop stop-color="#001AFF" offset="0.901042"></stop>
+          <stop stopColor="#00FFF0"></stop>
+          <stop stopColor="#001AFF" offset="0.901042"></stop>
         </radialGradient>
       </defs>
     </svg>
@@ -145,28 +145,3 @@ AddPhrase.propTypes = {
 };
 
 export default AddPhrase;
-{/* <form onSubmit={handleSubmit} className="add-phrase-form">
-    <input
-      type="text"
-      placeholder="Nueva frase"
-      value={phrase}
-      onChange={handlePhraseChange}
-      required
-    />
-    <input
-      type="text"
-      placeholder="Autor"
-      value={author}
-      onChange={(e) => setAuthor(e.target.value)}
-      required
-    />
-    <input
-        type="text"
-        placeholder="Categoría"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        required
-      />
-    <button type="submit">Añadir Frase</button>
-    {error && <p className="error-message">{error}</p>}
-  </form> */}

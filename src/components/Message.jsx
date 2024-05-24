@@ -8,7 +8,6 @@ const Message = ({ dataPhrase, dataAuthor, animation }) => {
           <div className="card-content">
             <p className="card-title">{dataAuthor}</p>
             <p className="card-description">{dataPhrase}</p>
-            {dataAuthor === 'Kelly' ? <img src="./kelly.png" className='kelly' alt="kelly" /> : ''}
           </div>
       </div>
 

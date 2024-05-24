@@ -107,12 +107,6 @@
   transform: rotate(-45deg);
 }
 
-.card-cokie:hover .kelly, .card-cokie-show .kelly { 
-  scale: 1;
-  transform: rotate(0deg);
-  width: 200px;
-}
-
 /* ------ */
 /*  formulario para agregar frases*/
 #Container {
@@ -772,10 +766,6 @@ button {
   }
   .container-cookie h1 {
     font-size: 25px;
-  }
-  .kelly {
-    width: 70px;
-    height: 140px;
   }
   
 }

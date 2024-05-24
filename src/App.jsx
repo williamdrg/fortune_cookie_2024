@@ -83,17 +83,10 @@ function App() {
     }, 3000);
   };
 
-  const changeCategory = (category) => {
-    setState(prevState => ({...prevState, category, index: 0 }));
-  };
-
-  const openModal = () => {
-    setState(prevState => ({ ...prevState, isModalOpen: true }));
-  };
-
-  const closeModal = () => {
-    setState(prevState => ({ ...prevState, isModalOpen: false }));
-  };
+  const changeCategory = (category) => setState(prevState => ({...prevState, category, index: 0 }));
+  const openModal = () => setState(prevState => ({ ...prevState, isModalOpen: true }));
+  const closeModal = () => setState(prevState => ({ ...prevState, isModalOpen: false }));
+  
 
   useEffect(() => {
     if (!state.isVisible) {
