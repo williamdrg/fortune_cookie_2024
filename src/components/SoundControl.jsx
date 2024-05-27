@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Componente de control de sonido que permite reproducir y pausar música de fondo.
+ * 
+ * @component
+ * @returns {JSX.Element} Elemento JSX que representa el control de sonido
+ */
 const SoundControl = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -68,13 +74,3 @@ const SoundControl = () => {
 };
 
 export default SoundControl;
-
-/*   <div className="sound-control">
-      <audio id="background-music" loop>
-        <source src="/fondo.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <button onClick={togglePlayPause}>
-        {isPlaying ? 'Pausar Música' : 'Reproducir Música'}
-      </button>
-    </div> */

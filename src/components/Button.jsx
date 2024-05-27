@@ -1,5 +1,18 @@
 import PropTypes from 'prop-types';
 
+/**
+ * Componente de botón que proporciona varias acciones para cambiar frases, 
+ * añadir a favoritos, mostrar favoritos y añadir nuevas frases.
+ * 
+ * @component
+ * @param {Object} props - Props del componente
+ * @param {function} props.change - Función que cambia la frase actual
+ * @param {function} props.addFavorite - Función que añade la frase actual a favoritos
+ * @param {function} props.toggleShowFavorites - Función que muestra u oculta los favoritos
+ * @param {string} props.isVisible - Clase CSS para controlar la visibilidad del botón
+ * @param {function} props.createFhrase - Función que abre el modal para añadir una nueva frase
+ * @returns {JSX.Element} Elemento JSX que representa los botones de acción
+ */
 const Button = ({ change, addFavorite, toggleShowFavorites, isVisible, createFhrase}) => {
         
   return (

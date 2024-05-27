@@ -2,6 +2,17 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
+/**
+ * Componente que permite añadir una nueva frase, autor y categoría.
+ * 
+ * @component
+ * @param {Object} props - Props del componente
+ * @param {function} props.addPhrase - Función para añadir una nueva frase
+ * @param {function} props.onClose - Función para cerrar el modal
+ * @param {boolean} props.isOpen - Indica si el modal está abierto
+ * @param {string} props.confirmMessage - Mensaje de confirmación después de añadir una frase
+ * @returns {JSX.Element|null} Elemento JSX que representa el formulario para añadir una nueva frase
+ */
 const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
   const [phrase, setPhrase] = useState('');
   const [author, setAuthor] = useState('');
@@ -10,6 +21,11 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
 
   if (!isOpen) return null;
 
+    /**
+   * Maneja el cambio en el campo de la frase, limitando su longitud a 130 caracteres.
+   * 
+   * @param {Object} e - Evento del cambio en el input
+   */
   const handlePhraseChange = (e) => {
     const value = e.target.value;
     if (value.length <= 130) {
@@ -20,6 +36,11 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
     }
   };
 
+   /**
+   * Maneja el envío del formulario, validando que todos los campos estén completos y que la frase no exceda los 130 caracteres.
+   * 
+   * @param {Object} event - Evento de envío del formulario
+   */
  const handleSubmit = (event) => {
     event.preventDefault();
     if (phrase.length <= 130 && author && category) {
@@ -35,6 +56,11 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
     }
   };
 
+   /**
+   * Maneja el cambio en el campo de la categoría, convirtiendo el texto a minúsculas.
+   * 
+   * @param {Object} e - Evento del cambio en el input
+   */
   const handleCategoryChange = (e) => {
     setCategory(e.target.value.toLowerCase());
   };
@@ -74,13 +100,13 @@ const AddPhrase = ({ addPhrase, onClose, isOpen, confirmMessage }) => {
   <div id="emiter">
     <svg fill="none" viewBox="0 0 160 61" height="61" width="160" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_di_1_38)">
-        <path fill="#2B2B2B" d="M80 27.9997C121.974 27.9997 156 22.4032 156 15.4996L156 40.4998C156 47.4034 121.974 52.9998 80 52.9998C38.0265 52.9998 4.00028 47.4034 4 40.4998V40.4998V15.51C4.0342 22.4089 38.0474 27.9997 80 27.9997Z" clip-rule="evenodd" fill-rule="evenodd" ></path></g>
+        <path fill="#2B2B2B" d="M80 27.9997C121.974 27.9997 156 22.4032 156 15.4996L156 40.4998C156 47.4034 121.974 52.9998 80 52.9998C38.0265 52.9998 4.00028 47.4034 4 40.4998V40.4998V15.51C4.0342 22.4089 38.0474 27.9997 80 27.9997Z" clipRule="evenodd" fillRule="evenodd" ></path></g>
       <ellipse fill="url(#paint0_radial_1_38)" ry="4.80773" rx="28.3956" cy="17.4236" cx="80"></ellipse>
       <g filter="url(#filter1_i_1_38)">
-        <path fill="#323232" d="M80 28.0002C121.974 28.0002 156 22.4037 156 15.5001C156 8.59648 121.974 3 80 3C38.0264 3 4 8.59648 4 15.5001C4 22.4037 38.0264 28.0002 80 28.0002ZM80.0001 20.308C96.1438 20.308 109.231 18.1555 109.231 15.5002C109.231 12.845 96.1438 10.6925 80.0001 10.6925C63.8564 10.6925 50.7693 12.845 50.7693 15.5002C50.7693 18.1555 63.8564 20.308 80.0001 20.308Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+        <path fill="#323232" d="M80 28.0002C121.974 28.0002 156 22.4037 156 15.5001C156 8.59648 121.974 3 80 3C38.0264 3 4 8.59648 4 15.5001C4 22.4037 38.0264 28.0002 80 28.0002ZM80.0001 20.308C96.1438 20.308 109.231 18.1555 109.231 15.5002C109.231 12.845 96.1438 10.6925 80.0001 10.6925C63.8564 10.6925 50.7693 12.845 50.7693 15.5002C50.7693 18.1555 63.8564 20.308 80.0001 20.308Z" clipRule="evenodd" fillRule="evenodd"></path>
       </g>
       <g filter="url(#filter2_di_1_38)">
-        <path fill="#378BA6" d="M106.725 17.4505C108.336 16.8543 109.231 16.1943 109.231 15.4999C109.231 12.8446 96.1438 10.6921 80.0001 10.6921C63.8564 10.6921 50.7693 12.8446 50.7693 15.4999C50.7693 16.1943 51.6645 16.8543 53.2752 17.4504C53.275 17.4414 53.2748 17.4323 53.2748 17.4232C53.2748 14.768 65.2401 12.6155 80.0001 12.6155C94.7601 12.6155 106.725 14.768 106.725 17.4232C106.725 17.4323 106.725 17.4414 106.725 17.4505Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+        <path fill="#378BA6" d="M106.725 17.4505C108.336 16.8543 109.231 16.1943 109.231 15.4999C109.231 12.8446 96.1438 10.6921 80.0001 10.6921C63.8564 10.6921 50.7693 12.8446 50.7693 15.4999C50.7693 16.1943 51.6645 16.8543 53.2752 17.4504C53.275 17.4414 53.2748 17.4323 53.2748 17.4232C53.2748 14.768 65.2401 12.6155 80.0001 12.6155C94.7601 12.6155 106.725 14.768 106.725 17.4232C106.725 17.4323 106.725 17.4414 106.725 17.4505Z" clipRule="evenodd" fillRule="evenodd"></path>
       </g>
       <defs>
         <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="45.5002" width="160" y="15.4996" x="0" id="filter0_di_1_38">

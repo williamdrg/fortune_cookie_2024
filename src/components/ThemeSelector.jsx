@@ -1,5 +1,11 @@
 import useTheme from '../useTeme';
 
+/**
+ * Componente que permite al usuario alternar entre temas claros y oscuros.
+ * 
+ * @component
+ * @returns {JSX.Element} Elemento JSX que representa el selector de tema
+ */
 const ThemeSelector = () => {
   const { theme, toggleTheme } = useTheme();
 

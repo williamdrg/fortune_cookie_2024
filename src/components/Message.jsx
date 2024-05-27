@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types';
 
+/**
+ * Componente que muestra un mensaje con una frase y su autor, junto con una animación.
+ * 
+ * @component
+ * @param {Object} props - Props del componente
+ * @param {string} props.dataPhrase - La frase que se va a mostrar
+ * @param {string} props.dataAuthor - El autor de la frase
+ * @param {string} props.animation - Clase CSS para aplicar la animación al mensaje
+ * @returns {JSX.Element} Elemento JSX que representa el mensaje con la frase y su autor
+ */
 const Message = ({ dataPhrase, dataAuthor, animation }) => {
     
     return (

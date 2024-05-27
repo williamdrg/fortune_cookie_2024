@@ -2,31 +2,24 @@ import './App.css'
 import Button from './components/Button'
 import Message from './components/Message'
 import FavoriteList from './components/FavoriteList'
-import ShareButtons from './components/ShareButtons';
-import AddPhrase from './components/AddPhrase';
-import Modal from './components/Modal';
-import phrasesData from './data/phrases.json';
-import ThemeSelector from './components/ThemeSelector';
-import CategorySelector from './components/CategorySelector';
-import Footer from './components/Footer';
-import SoundControl from './components/SoundControl';
+import ShareButtons from './components/ShareButtons'
+import AddPhrase from './components/AddPhrase'
+import Modal from './components/Modal'
+import phrasesData from './utils/phrases.json'
+import ThemeSelector from './components/ThemeSelector'
+import CategorySelector from './components/CategorySelector'
+import Footer from './components/Footer'
+import SoundControl from './components/SoundControl'
 import { useState, useEffect } from 'react'
-import { BACKGROUND_IMAGES } from './constants';
-
+import { BACKGROUND_IMAGES } from './constants'
 
 function App() {
 
-  const backgroundImage = [ 
-    "url(/font-1.webp)", "url(/font-2.webp)", "url(/font-3.webp)", 
-    "url(/font-4.webp)", "url(/font-5.webp)", "url(/font-6.webp)"
-  ]
-
   const initialPhrases = JSON.parse(localStorage.getItem('phrases')) || phrasesData;
-  // localStorage.removeItem('phrases');
 
-  const [state, setState] = useState({ 
-    index: 0, 
-    indexa: 0, 
+  const [state, setState] = useState({
+    index: 0,
+    backgroundIndex: 0,
     isVisible: true,
     phrases: initialPhrases,
     favorites: JSON.parse(localStorage.getItem('favorites')) || [],
@@ -37,42 +30,46 @@ function App() {
     isFavoritesModalOpen: false,
     isAddFavoriteModalOpen: false,
     addFavoriteMessage: ''
-   });
+  });
 
-   const [categories, setCategories] = useState([...new Set(phrasesData.map(p => p.category)), 'all']);
+  const [categories, setCategories] = useState([...new Set(phrasesData.map(p => p.category)), 'all']);
 
-   const filteredPhrases = state.category === 'all'
-   ? state.phrases
-   : state.phrases.filter(phrase => phrase.category == state.category);
+  const filteredPhrases = state.category === 'all'
+    ? state.phrases
+    : state.phrases.filter(phrase => phrase.category === state.category);
 
-
-   useEffect(() => {
-    // Pre-carga de imágenes de fondo
-    BACKGROUND_IMAGES.forEach((image) => {
+  useEffect(() => {
+    BACKGROUND_IMAGES.forEach(image => {
       const img = new Image();
-      img.src = image.slice(4, -1).replace(/"/g, ""); // Eliminamos "url(" y ")" del string
+      img.src = image.slice(4, -1).replace(/"/g, "");
     });
   }, []);
 
+  /**
+   * Cambia el índice de la frase y la imagen de fondo mostrada.
+   */
   const changeIndex = () => {
     setState(prevState => ({
       ...prevState,
       index: Math.floor(Math.random() * filteredPhrases.length),
-      indexa: Math.floor(Math.random() * backgroundImage.length),
+      backgroundIndex: Math.floor(Math.random() * BACKGROUND_IMAGES.length),
       isVisible: !prevState.isVisible
     }));
   };
 
+  /**
+   * Añade la frase actual a los favoritos.
+   */
   const addFavorite = () => {
     const newFavorite = filteredPhrases[state.index];
-    if (!state.favorites.some(fav => fav.phrase === newFavorite.phrase)) {   
+    if (!state.favorites.some(fav => fav.phrase === newFavorite.phrase)) {
       const newFavorites = [...state.favorites, newFavorite];
-      setState(prevState => ({ 
-        ...prevState, 
+      setState(prevState => ({
+        ...prevState,
         favorites: newFavorites,
         isAddFavoriteModalOpen: true,
         addFavoriteMessage: '¡Frase añadida a favoritos!'
-       }));
+      }));
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
     } else {
       setState(prevState => ({
@@ -83,40 +80,63 @@ function App() {
     }
   };
 
+  /**
+   * Cierra el modal de confirmación de añadido a favoritos.
+   */
   const closeAddFavoriteModal = () => {
     setState(prevState => ({ ...prevState, isAddFavoriteModalOpen: false }));
   };
 
+  /**
+   * Elimina una frase de los favoritos.
+   * 
+   * @param {string} phraseToRemove - La frase que se desea eliminar de los favoritos.
+   */
   const removeFavorite = (phraseToRemove) => {
     const newFavorites = state.favorites.filter(fav => fav.phrase !== phraseToRemove);
     setState(prevState => ({ ...prevState, favorites: newFavorites }));
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
+  /**
+   * Alterna la visibilidad del modal de favoritos.
+   */
   const toggleShowFavorites = () => {
     setState(prevState => ({ ...prevState, isFavoritesModalOpen: !prevState.isFavoritesModalOpen }));
   };
 
+  /**
+   * Añade una nueva frase a la lista de frases.
+   * 
+   * @param {Object} newPhrase - La nueva frase que se desea añadir.
+   * @param {string} newPhrase.phrase - El texto de la frase.
+   * @param {string} newPhrase.author - El autor de la frase.
+   * @param {string} newPhrase.category - La categoría de la frase.
+   */
   const addPhrase = (newPhrase) => {
     const newPhrases = [...state.phrases, newPhrase];
-  
-    setState(prevState => ({ ...prevState, phrases: newPhrases,  confirmationMessage: 'Frase añadida correctamente!' }));
+    setState(prevState => ({ ...prevState, phrases: newPhrases, confirmationMessage: 'Frase añadida correctamente!' }));
     localStorage.setItem('phrases', JSON.stringify(newPhrases));
 
     if (!categories.includes(newPhrase.category) && typeof newPhrase.category === 'string') {
       setCategories([...categories, newPhrase.category]);
     }
-    
+
     setTimeout(() => {
       setState(prevState => ({ ...prevState, confirmationMessage: '' }));
     }, 3000);
   };
 
-  const changeCategory = (category) => setState(prevState => ({...prevState, category, index: 0 }));
+   /**
+   * Cambia la categoría de las frases mostradas.
+   * 
+   * @param {string} category - La categoría que se desea establecer.
+   */
+  const changeCategory = (category) => setState(prevState => ({ ...prevState, category, index: 0 }));
   const openModal = () => setState(prevState => ({ ...prevState, isModalOpen: true }));
   const closeModal = () => setState(prevState => ({ ...prevState, isModalOpen: false }));
-  
 
+  // Maneja la visibilidad del mensaje con un temporizador
   useEffect(() => {
     if (!state.isVisible) {
       const timer = setTimeout(() => {
@@ -127,38 +147,37 @@ function App() {
   }, [state.isVisible]);
 
   return (
-        <div className="App" style={{ backgroundImage: BACKGROUND_IMAGES[state.indexa] }}>
-          <div className="overlay">
-            <div className='container-cookie'>
-            <h1>¡DESCUBRE LO QUE LA FORTUNA TIENE PARA TI!</h1>
-              <CategorySelector category={state.category} changeCategory={changeCategory} categories={categories} />
-              <Message
-                dataPhrase={filteredPhrases[state.index].phrase}
-                dataAuthor={filteredPhrases[state.index].author}
-                animation={state.isVisible ? 'card-cokie' : 'card-cokie card-cokie-show'}
-              />
-              <Button
-                change={changeIndex}
-                addFavorite={addFavorite}
-                toggleShowFavorites={toggleShowFavorites}
-                isVisible={state.isVisible ? 'btn-change' : 'btn-change btn-off'}
-                createFhrase={openModal}
-              />
-              <ShareButtons phrase={filteredPhrases[state.index].phrase} />
-              <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} confirmMessage={state.confirmationMessage}/>
-              {/* {state.confirmationMessage && <div className="confirmation-message">{state.confirmationMessage}</div>} */}
-              <ThemeSelector />
-              <SoundControl />
-            </div>
+    <div className="App" style={{ backgroundImage: BACKGROUND_IMAGES[state.backgroundIndex] }}>
+      <div className="overlay">
+        <div className='container-cookie'>
+          <h1>¡DESCUBRE LO QUE LA FORTUNA TIENE PARA TI!</h1>
+          <CategorySelector category={state.category} changeCategory={changeCategory} categories={categories} />
+          <Message
+            dataPhrase={filteredPhrases[state.index].phrase}
+            dataAuthor={filteredPhrases[state.index].author}
+            animation={state.isVisible ? 'card-cokie' : 'card-cokie card-cokie-show'}
+          />
+          <Button
+            change={changeIndex}
+            addFavorite={addFavorite}
+            toggleShowFavorites={toggleShowFavorites}
+            isVisible={state.isVisible ? 'btn-change' : 'btn-change btn-off'}
+            createFhrase={openModal}
+          />
+          <ShareButtons phrase={filteredPhrases[state.index].phrase} />
+          <AddPhrase isOpen={state.isModalOpen} addPhrase={addPhrase} onClose={closeModal} confirmMessage={state.confirmationMessage} />
+          <ThemeSelector />
+          <SoundControl />
         </div>
-          <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
-            <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />
-          </Modal>
-          <Modal isOpen={state.isAddFavoriteModalOpen} onClose={closeAddFavoriteModal}>
-            <p className='favorite-message'>{state.addFavoriteMessage}</p>
-          </Modal>
-          <Footer />
       </div>
+      <Modal isOpen={state.isFavoritesModalOpen} onClose={toggleShowFavorites}>
+        <FavoriteList favorites={state.favorites} removeFavorite={removeFavorite} />
+      </Modal>
+      <Modal isOpen={state.isAddFavoriteModalOpen} onClose={closeAddFavoriteModal}>
+        <p className='favorite-message'>{state.addFavoriteMessage}</p>
+      </Modal>
+      <Footer />
+    </div>
   )
 }
 

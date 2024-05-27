@@ -1,6 +1,15 @@
 import PropTypes from 'prop-types';
-// import '../../src/App.css';
 
+/**
+ * Componente de modal que muestra contenido pasado como children cuando está abierto.
+ * 
+ * @component
+ * @param {Object} props - Props del componente
+ * @param {boolean} props.isOpen - Indica si el modal está abierto
+ * @param {function} props.onClose - Función para cerrar el modal
+ * @param {React.ReactNode} props.children - Contenido a mostrar dentro del modal
+ * @returns {JSX.Element|null} Elemento JSX que representa el modal o `null` si no está abierto
+ */
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
